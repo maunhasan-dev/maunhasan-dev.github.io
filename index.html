@@ -1,19 +1,68 @@
 <!DOCTYPE html>
-<!-- Baris di atas kasih tau browser: "ini dokumen HTML modern" -->
 <html lang="id">
 <head>
-  <!-- Bagian <head> = info "belakang layar", nggak tampil di halaman -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- baris viewport di atas: bikin halaman rapi di HP, bukan cuma di laptop -->
   <title>Maunhasan — Portfolio</title>
-  <!-- teks di tab browser -->
 </head>
 <body>
-  <!-- Bagian <body> = ISI halaman yang beneran keliatan -->
 
-  <h1>Halo, saya Maunhasan</h1>
-  <p>Developer pemula asal Indonesia yang sedang belajar web development dari nol lewat praktik langsung. Saya fokus di HTML, CSS, dan JavaScript, dimana setiap project saya kerjakan bertahap dengan versi tercatat rapi, karena bagi saya proses belajar itu sendiri layak untuk didokumentasikan. Berikut project-project yang sedang saya bangun.</p>
+  <!-- ===== HERO: bagian paling atas, perkenalan singkat ===== -->
+  <header>
+    <h1>Maunhasan</h1>
+    <p>Developer pemula asal Indonesia, sedang belajar web development dari nol.</p>
+  </header>
+
+  <!-- ===== TENTANG: deskripsi lebih lengkap ===== -->
+  <section id="tentang">
+    <h2>Tentang Saya</h2>
+    <p>
+      Halo, saya Maunhasan — developer pemula asal Indonesia yang sedang
+      belajar web development dari nol lewat praktik langsung. Saya fokus
+      di HTML, CSS, dan JavaScript, dan setiap project saya kerjakan
+      bertahap dengan versi tercatat rapi, karena bagi saya proses belajar
+      itu sendiri layak untuk didokumentasikan.
+    </p>
+  </section>
+
+  <!-- ===== PROJECT: daftar "log" project, tiap project 1 blok ===== -->
+  <section id="project">
+    <h2>Project</h2>
+
+    <!-- LOG 01 -->
+    <article>
+      <p><em>LOG_01</em></p>
+      <h3>Djamuntara</h3>
+      <p>
+        Website e-commerce untuk brand jamu modern. Termasuk katalog produk,
+        keranjang belanja, checkout, dan sistem bilingual (ID/EN).
+      </p>
+      <a href="#">Lihat Project</a>
+      <!-- href="#" itu placeholder, nanti diganti link asli -->
+    </article>
+
+    <!-- LOG 02 -->
+    <article>
+      <p><em>LOG_02</em></p>
+      <h3>Lead Magnet Idea Generator</h3>
+      <p>
+        Web app kecil untuk membantu menemukan ide lead magnet berdasarkan
+        industri bisnis, dibangun dari riset konten strategi marketing.
+      </p>
+      <a href="#">Lihat Project</a>
+    </article>
+
+  </section>
+
+  <!-- ===== KONTAK ===== -->
+  <section id="kontak">
+    <h2>Kontak</h2>
+    <p>Email: <a href="mailto:emailkamu@gmail.com">emailkamu@gmail.com</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Maunhasan</p>
+  </footer>
 
 </body>
 </html>
