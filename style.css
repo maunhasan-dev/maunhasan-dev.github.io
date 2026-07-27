@@ -1,0 +1,91 @@
+/* ===== IMPORT FONT dari Google Fonts ===== */
+/* Space Mono buat label "LOG_", Fraunces buat judul besar, Inter buat teks biasa */
+
+/* ===== RESET DASAR ===== */
+/* Browser punya margin/padding bawaan yang beda-beda, kita samain jadi 0 dulu */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* biar padding & border nggak bikin ukuran melebar aneh */
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #F6F5F1; /* warna kertas hangat */
+  color: #1C1E1B; /* warna tinta gelap, bukan hitam pekat, lebih soft di mata */
+  line-height: 1.6; /* jarak antar baris, biar teks nggak sesak */
+  max-width: 700px; /* biar teks nggak melebar kalau dibuka di layar lebar */
+  margin: 0 auto; /* bikin konten di tengah halaman */
+  padding: 24px;
+}
+
+/* ===== HERO ===== */
+header h1 {
+  font-family: 'Fraunces', serif;
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+header p {
+  color: #6B6B63; /* abu-abu redup buat sub-teks */
+}
+
+header {
+  margin-bottom: 48px;
+}
+
+/* ===== JUDUL SECTION (Tentang, Project, Kontak) ===== */
+section h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #2F4B7C; /* garis bawah biru tinta, ciri khas */
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+section {
+  margin-bottom: 48px;
+}
+
+/* ===== KARTU PROJECT (article) ===== */
+article {
+  border: 1px dashed #B8B4A8; /* garis putus-putus, kesan "sobekan kertas log" */
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+}
+
+/* Label LOG_01, LOG_02 pakai font monospace */
+article em {
+  font-family: 'Space Mono', monospace;
+  font-style: normal;
+  font-size: 0.8rem;
+  color: #E8A33D; /* aksen amber, kayak stempel */
+  letter-spacing: 1px;
+}
+
+article h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.3rem;
+  margin: 8px 0;
+}
+
+article a {
+  color: #2F4B7C;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+article a:hover {
+  text-decoration: underline;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  color: #6B6B63;
+  font-size: 0.85rem;
+  margin-top: 48px;
+}
