@@ -50,11 +50,21 @@ section {
 
 /* ===== KARTU PROJECT (article) ===== */
 article {
-  border: 1px dashed #B8B4A8; /* garis putus-putus, kesan "sobekan kertas log" */
+  border: 1px dashed #B8B4A8;
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 4px;
   background-color: #FFFFFF;
+
+  /* animasikan perubahan transform & shadow secara halus, 0.25 detik */
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+/* :hover = kondisi khusus "pas kursor/jari nyentuh elemen ini" */
+article:hover {
+  transform: translateY(-4px);       /* kartu naik 4px */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08); /* muncul bayangan lembut */
+  border-color: #2F4B7C;             /* garis putus-putus berubah jadi biru tinta */
 }
 
 /* Label LOG_01, LOG_02 pakai font monospace */
