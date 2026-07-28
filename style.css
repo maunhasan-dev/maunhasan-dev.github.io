@@ -1,40 +1,253 @@
-/* ===== IMPORT FONT dari Google Fonts ===== */
-/* Space Mono buat label "LOG_", Fraunces buat judul besar, Inter buat teks biasa */
+/* ===== VARIABEL WARNA & UKURAN ===== */
+/* Simpen nilai yang dipakai berulang di satu tempat, biar gampang diubah nanti */
+:root {
+  --paper: #F6F5F1;
+  --ink: #1C1E1B;
+  --ink-light: #6B6B63;
+  --accent-blue: #2F4B7C;
+  --accent-amber: #E8A33D;
+  --border: #B8B4A8;
+  --white: #FFFFFF;
+}
 
 /* ===== RESET DASAR ===== */
-/* Browser punya margin/padding bawaan yang beda-beda, kita samain jadi 0 dulu */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* biar padding & border nggak bikin ukuran melebar aneh */
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth; /* biar klik nav (#tentang dll) geser halus, bukan loncat */
 }
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #F6F5F1; /* warna kertas hangat */
-  color: #1C1E1B; /* warna tinta gelap, bukan hitam pekat, lebih soft di mata */
-  line-height: 1.6; /* jarak antar baris, biar teks nggak sesak */
-  max-width: 700px; /* biar teks nggak melebar kalau dibuka di layar lebar */
-  margin: 0 auto; /* bikin konten di tengah halaman */
-  padding: 24px;
+  background-color: var(--paper);
+  color: var(--ink);
+  line-height: 1.65;
 }
 
 /* ===== HERO ===== */
-header h1 {
+.hero {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 56px 24px 40px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: var(--accent-amber);
+  margin-bottom: 12px;
+}
+
+.hero h1 {
   font-family: 'Fraunces', serif;
-  font-size: 2.5rem;
+  font-size: clamp(2.2rem, 6vw, 3rem); /* otomatis nyesuain ukuran layar */
+  margin-bottom: 12px;
+}
+
+.tagline {
+  color: var(--ink-light);
+  font-size: 1.05rem;
+  max-width: 480px;
+  margin-bottom: 28px;
+}
+
+.hero-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.hero-nav a {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  color: var(--ink);
+  text-decoration: none;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.hero-nav a:hover,
+.hero-nav a:focus-visible {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+}
+
+/* ===== LAYOUT UTAMA ===== */
+main {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+section {
+  margin: 56px 0;
+}
+
+section h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+  display: inline-block;
+  border-bottom: 2px solid var(--accent-blue);
+  padding-bottom: 4px;
+}
+
+.section-intro {
+  color: var(--ink-light);
+  margin: 12px 0 24px;
+}
+
+/* ===== GRID PROJECT ===== */
+.project-grid {
+  display: grid;
+  grid-template-columns: 1fr;        /* default: 1 kolom (HP) */
+  gap: 24px;
+}
+
+/* Di layar lebih lebar dari 640px, ganti jadi 2 kolom */
+@media (min-width: 640px) {
+  .project-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ===== KARTU PROJECT ===== */
+article {
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  padding: 20px;
+  background-color: var(--white);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease,
+    opacity 0.6s ease;
+
+  /* kondisi awal sebelum di-scroll ke: transparan & turun sedikit */
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Class ini ditambahkan lewat JavaScript pas kartu masuk layar */
+article.muncul {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Bikin kartu ke-2 muncul sedikit lebih lambat dari kartu ke-1 → efek "gantian" */
+article:nth-of-type(2) {
+  transition-delay: 0.1s;
+}
+
+/* Efek hover TERPISAH dari animasi muncul, supaya nggak tabrakan */
+article:hover,
+article:focus-within {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  border-color: var(--accent-blue);
+}
+article.muncul:hover,
+article.muncul:focus-within {
+  transform: translateY(-4px); /* tetap naik meski state 'muncul' juga pakai translateY(0) */
+}
+
+.thumb {
+  width: 100%;
+  aspect-ratio: 16 / 10;       /* rasio tetap, seragam meski gambar beda ukuran */
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: var(--paper);
+  margin-bottom: 14px;
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;           /* gambar dipotong rapi biar penuhi kotak, nggak gepeng */
+  display: block;
+}
+
+.log-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: var(--accent-amber);
+  margin-bottom: 6px;
+}
+
+article h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.25rem;
   margin-bottom: 8px;
 }
 
-header p {
-  color: #6B6B63; /* abu-abu redup buat sub-teks */
+article p {
+  font-size: 0.95rem;
+  color: var(--ink-light);
+  margin-bottom: 14px;
 }
 
-header {
-  margin-bottom: 48px;
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent-blue);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
 }
 
-/* ===== JUDUL SECTION (Tentang, Project, Kontak) ===== */
+.project-link:hover span,
+.project-link:focus-visible span {
+  transform: translateX(3px); /* panah bergeser dikit pas di-hover */
+}
+
+.project-link span {
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+/* ===== KONTAK ===== */
+#kontak a {
+  color: var(--accent-blue);
+  font-weight: 600;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  color: var(--ink-light);
+  font-size: 0.85rem;
+  padding: 32px 24px 48px;
+}
+
+/* ===== AKSESIBILITAS ===== */
+/* Garis outline biru pas elemen di-fokus pakai keyboard (Tab) */
+a:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 3px;
+}
+
+/* Kalau HP di-setting "kurangi animasi", situs kita nurut & matikan animasi */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+  article {
+    opacity: 1;
+    transform: none;
+  }
+}/* ===== JUDUL SECTION (Tentang, Project, Kontak) ===== */
 section h2 {
   font-family: 'Fraunces', serif;
   font-size: 1.5rem;
